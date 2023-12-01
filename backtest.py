@@ -15,13 +15,18 @@ class Backtest:
     def generate_signals(self):
         positions = self.signals
         positions=pd.DataFrame(index=self.signals.index) #Empty dataframe and populate it with timestamp indexing
-        positions['action'] = self.signals['signal']
+        positions['Action'] = self.signals['signal']
         return positions
 
     def backtest_portfolio(self):
         portfolio = self.positions.diff()
-        portfolio["price"] = self.data["Close"]
+        portfolio["Price"] = self.data["Close"]
         portfolio["Long Only"] = portfolio["price"]*self.initital_holdings
+        for time_stamp, row in portfolio.iterrows():
+            
+            pass
+        pass
+
         # portfolio["Long Only"] = 
         # pos_diff=self.positions.diff() #calculate difference btw each element
         # portfolio['holdings']=(self.positions.multiply(self.data["Close"], axis=0)).sum(axis=1)
