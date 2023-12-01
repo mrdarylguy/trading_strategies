@@ -1,0 +1,1 @@
+portfolio.plot(kind="line")
