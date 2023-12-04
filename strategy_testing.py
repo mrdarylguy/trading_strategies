@@ -17,10 +17,11 @@ assets = ["BTC-USD"]
 ticker = "BTC-USD"
 
 #date ranges of data  
-end_date = "2023-11-30"
+end_date = "2023-12-03"
 start_date = "2023-07-01"
+inital_capital = 10000
 
-#obtain data as dictionary of dataframes => {asset: DataFrame}
+# #obtain data as dictionary of dataframes => {asset: DataFrame}
 data = {}
 for asset in assets:
     data[asset]=yf.download(asset, 
@@ -32,7 +33,7 @@ for asset in assets:
 data[ticker]["SMA_5"]=data[ticker]["Close"].rolling(window=5).mean()
 data[ticker]["SMA_20"]=data[ticker]["Close"].rolling(window=20).mean()
 
-#Feed data to the function and generate trading signals for each time step
+# #Feed data to the function and generate trading signals for each time step
 strategy=macd.MovingAverageCrossoverStrategy(short_window=5,
                                               long_window=20).generate_signals(data[ticker])
 # print(strategy)
@@ -40,9 +41,9 @@ strategy=macd.MovingAverageCrossoverStrategy(short_window=5,
 # perform backtest
 backtest=backtest.Backtest(data[ticker], 
                             strategy,
-                            1000)
-# print(backtest.positions)
-portfolio=backtest.portfolio.fillna(0.0)
+                            inital_capital)
+
+portfolio=backtest.portfolio
 print(portfolio)
 
 # plt.figure(figsize=(14, 7))
@@ -53,7 +54,6 @@ print(portfolio)
 # plt.legend()
 # plt.grid(True)
 # plt.show()
-
 
 #plotting price signals
 # plt.figure(figsize=(14, 7))
