@@ -2,7 +2,8 @@
 
 This repo contains code that develops trading signals and backtests against them historical data for any ticker symbol of the user's choice.
 
-![Screenshot 2023-12-01 at 11 37 13 PM](https://github.com/mrdarylguy/trading_strategies/assets/42925677/962b8de3-b7cc-441a-a2da-7eea35125529)
+![image](https://github.com/mrdarylguy/trading_strategies/assets/42925677/598671ed-ac28-43a4-a649-257c8d76e22d)
+
 
 It also contrasts the strategy performance against a traditional "Long Only" strategy across the same time horzon.
 
