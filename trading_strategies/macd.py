@@ -46,5 +46,5 @@ class MovingAverageCrossoverStrategy:
         plt.ylabel("Price (USD)")
         plt.legend()
         plt.grid(True)
-        plt.savefig("plots\macd\ trading_signals.png")
+        plt.savefig("plots/macd/trading_signals")
         plt.show()
