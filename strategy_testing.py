@@ -32,17 +32,15 @@ strategy=macd.MovingAverageCrossoverStrategy(data[ticker],
                                              short_window=5,
                                              long_window=20).strategy
 
-# macd.MovingAverageCrossoverStrategy(data[ticker], 
-#                                             ticker,
-#                                             short_window=5,
-#                                             long_window=20).plotting()
+macd.MovingAverageCrossoverStrategy(data[ticker], 
+                                            ticker,
+                                            short_window=5,
+                                            long_window=20).plotting()
 
-# # perform backtest
+# perform backtest
 backtest=backtest.Backtest(data[ticker], 
                             strategy,
                             inital_capital)
 
 portfolio=backtest.portfolio
-# print(portfolio["Action"])
-# print(portfolio["Portfolio Value"])
 backtest.plotting()

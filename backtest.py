@@ -77,7 +77,6 @@ class Backtest:
                                                
                                                index=self.signals.index)
         
-        # return portfolio_
         return portfolio.round(2)
     
     def plotting(self):
