@@ -1,0 +1,9 @@
+In strategy_testing.py, pass 1 of the following strategies to the variable:
+
+signal_generator= "............................"
+
+#Moving Averages of 5 time steps and 20 timesteps
+macd.MovingAverageCrossoverStrategy(data[ticker], ticker,short_window=5,long_window=20)
+
+#Bollinger bands of 2 Standard Deviations and 10 timesteps moving average
+bollinger.Bollinger(data[ticker], ticker,SMA=10,SD=2)
