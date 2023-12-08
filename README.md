@@ -20,5 +20,5 @@ Current structure of the repo is as follows ⬇️
 | --- | --- |
 | Select strategy | Function calls for each signal generator are found in ```CodeForStrategies.txt``` |
 | Generate Signals | Trading signals are generated in the form of 1: Buy, -1: Sell, 0: Hold, and a CSV file is generated in ```/results/.../trading_signals.csv```. |
-| Backtesting | The signal generation function returns a dataframe of 1, -1, 0, which is passed to the backtest.py function, which returns another csv in ```/results/.../strategy_performance.csv```. |
+| Backtesting | The signal generation function returns a dataframe of 1, -1, 0, which is passed to the ```backtest.py``` function, which returns another csv in ```/results/.../strategy_performance.csv```. |
 | Plotting | A plot of the relative performance is generated in .png format in ```plots/.../****.png```. |
