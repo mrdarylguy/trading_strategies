@@ -5,7 +5,7 @@ This repo contains code that develops trading signals and backtests against them
 ![image](https://github.com/mrdarylguy/trading_strategies/assets/42925677/598671ed-ac28-43a4-a649-257c8d76e22d)
 
 
-It also contrasts the strategy performance against a traditional "Long Only" strategy across the same time horzon.
+It contrasts the strategy performance against a traditional "Long Only" strategy across the same time horzon.
 
 Currently include strategies from the strategies below: 
 * The Death Cross / Golden Cross (50 and 200 day moving averages)
@@ -16,4 +16,9 @@ Currently includes API from the following sources:
 
 Current structure of the repo is as follows ⬇️
 
-Driver code is: ```strategy_testing.py```, which draws upon dependencies ```backtest.py``` and whichever chosen strategy located within ```~/strategies/```
+| Control Flow | Description |
+| --- | --- |
+| Select strategy | Function calls for each signal generator are found in ```CodeForStrategies.txt``` |
+| Generate Signals | Trading signals are generated in the form of 1: Buy, -1: Sell, 0: Hold, and a CSV file is generated in ```/results/.../trading_signals.csv```. |
+| Backtesting | The signal generation function returns a dataframe of 1, -1, 0, which is passed to the backtest.py function, which returns another csv in ```/results/.../strategy_performance.csv```. |
+| Plotting | A plot of the relative performance is generated in .png format in ```plots/.../****.png```. |
