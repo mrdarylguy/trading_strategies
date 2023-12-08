@@ -1,4 +1,4 @@
-# trading_strategies
+# Systematic Trading Strategies
 
 This repo contains code that develops trading signals and backtests against them historical data for any ticker symbol of the user's choice.
 
