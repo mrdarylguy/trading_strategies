@@ -8,7 +8,8 @@ This repo contains code that develops trading signals and backtests against them
 It also contrasts the strategy performance against a traditional "Long Only" strategy across the same time horzon.
 
 Currently include strategies from the strategies below: 
-* The Death Cross / Golden Cross (50 and 200 day moving averages) 
+* The Death Cross / Golden Cross (50 and 200 day moving averages)
+* Bollinger Bands 
 
 Currently includes API from the following sources:
 * Yahoo Finance
