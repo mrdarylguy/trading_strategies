@@ -14,13 +14,13 @@ class MovingAverageCrossoverStrategy:
     #Feed dataset to signal generator
     def generate_signals(self):
         signals=pd.DataFrame(index=self.data.index)
-        signals['signal']=0.0
+        signals['positions']=0.0
         signals['short_mavg']=self.data['Close'].rolling(window=self.short_window, min_periods=1).mean() #rolling mean
         signals['long_mavg']=self.data['Close'].rolling(window=self.long_window, min_periods=1).mean()
-        signals['signal'][self.short_window:]=np.where(signals["short_mavg"][self.short_window:]
+        signals['positions'][self.short_window:]=np.where(signals["short_mavg"][self.short_window:]
                                                        >signals["long_mavg"][self.short_window:], 
                                                        1.0, 0.0)
-        signals["positions"]=signals['signal'].diff()
+        signals["signal"]=signals['positions'].diff()
         signals.to_csv("results/macd/results.csv", sep=",", header=True)
         return signals
     
@@ -29,15 +29,14 @@ class MovingAverageCrossoverStrategy:
         plt.plot(self.data["Close"], label=self.ticker+" prices")
         plt.plot(self.strategy["short_mavg"], label=str(self.short_window)+" day SMA")
         plt.plot(self.strategy["long_mavg"], label=str(self.long_window)+" day SMA")
-        plt.scatter(self.strategy.loc[self.strategy.positions==1.0].index, 
-                    self.strategy.short_mavg[self.strategy.positions==1.0],
+        plt.scatter(self.strategy.loc[self.strategy.signal==1.0].index, 
+                    self.strategy.short_mavg[self.strategy.signal==1.0],
                     label="Buy Signal", 
                     marker="^", 
                     color="g", 
                     s=100)
-
-        plt.scatter(self.strategy.loc[self.strategy.positions==-1.0].index,
-                    self.strategy.short_mavg[self.strategy.positions==-1.0],
+        plt.scatter(self.strategy.loc[self.strategy.signal==-1.0].index,
+                    self.strategy.short_mavg[self.strategy.signal==-1.0],
                     label="Sell Signal", 
                     marker="v", 
                     color="r",
@@ -49,4 +48,3 @@ class MovingAverageCrossoverStrategy:
         plt.legend()
         plt.grid(True)
         plt.savefig("plots/macd/trading_signals.png")
-        plt.show()
