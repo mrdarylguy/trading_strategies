@@ -11,7 +11,7 @@ ticker = "BTC-USD"
 
 #date ranges of data  
 end_date = "2023-11-30"
-start_date = "2023-08-15"
+start_date = "2023-07-15"
 inital_capital = 10000
 
 # #obtain data as dictionary of dataframes => {asset: DataFrame}
