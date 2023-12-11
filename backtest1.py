@@ -39,60 +39,12 @@ class Backtest:
         portfolio["Action"]=portfolio["Action"].replace(to_replace=2.0, value=1.0)
         portfolio["Action"]=portfolio["Action"].replace(to_replace=-2.0, value=-1.0)
         portfolio["Action"]=portfolio["Action"].fillna(0.0)
-        # for index, row in portfolio.iterrows():
-        #     self.price = row["Price"]
-
-        #     #Forbid selling w/o owning
-        #     if row["Action"] == -1.0 and self.holdings==0:
-        #         portfolio.at[index, "Portfolio Value"] = self.capital
-        #         portfolio.at[index, "Holdings"] = self.holdings
-        #         pass
-
-        #     #Forbid buying w zero capital 
-        #     elif row["Action"] == 1.0 and self.capital==0:
-        #         portfolio.at[index, "Holdings"] = self.holdings
-        #         portfolio.at[index, "Portfolio Value"] = self.holdings*self.price
-        #         pass
-
-        #     # Execute Buy Order
-        #     elif row["Action"] == 1.0 and self.capital>0:
-        #         #Obtain units of security
-        #         self.holdings = self.capital/self.price
-        #         portfolio.at[index, "Holdings"] = self.holdings
-        #         portfolio.at[index, "Portfolio Value"] = self.capital
-        #         self.capital=0
-        #         self.prev_order=1.0
-        #         pass
-            
-            # #Excute Sell Order
-            # elif row["Action"] == -1.0 and self.holdings>0:
-            #     #liquidate positions
-            #     self.capital = self.holdings*self.price
-            #     portfolio.at[index, "Portfolio Value"] = self.capital
-            #     portfolio.at[index, "Holdings"] = 0
-            #     self.holdings = 0
-            #     self.prev_order = -1.0
-            #     pass
-
-        #     # Hold
-            # elif row["Action"] == 0:
-            #     if self.holdings == 0 and self.capital>0:
-            #         portfolio.at[index, "Portolio Value"] = self.capital
-            #         portfolio.at[index, "Holdings"] = self.holdings 
-            #         pass
-            #     elif self.capital == 0 and self.holdings>0: 
-            #         portfolio.at[index, "Holdings"] = self.holdings
-            #         portfolio.at[index, "Portolio Value"] = self.holdings*self.price
-            #         pass
-
-        #         pass
-            
+        
 
         portfolio_ = {}
         for col in portfolio.columns:
             portfolio_[col] = portfolio[col].values.tolist() 
         #Convert to dictionary of lists for ease of manipulation
-
         for i in range(1, len(portfolio_["Action"])):
             self.price = portfolio_["Price"][i]
 
@@ -132,12 +84,6 @@ class Backtest:
                 portfolio_["Holdings"][i] = self.holdings
                 self.prev_order=-1.0
                 pass
-                # portfolio_["Holdings"][i] = self.holdings
-                # self.capital = portfolio_["Holdings"][i]*self.price #Liquidate at market price
-                # portfolio_["Portfolio Value"][i] = self.capital
-                # self.holdings = 0
-                # self.prev_order = -1.0
-                # pass
 
             #Hold 
             elif portfolio_["Action"][i] == 0:
