@@ -11,7 +11,8 @@ Currently include strategies from the strategies below:
 * The Death Cross / Golden Cross (50 and 200 day moving averages)
 * Bollinger Bands 
 
-Currently includes API from the following sources:
+Currently includes historical data from the following API:
+* Polygon.io 
 * Yahoo Finance
 
 Current structure of the repo is as follows ⬇️
