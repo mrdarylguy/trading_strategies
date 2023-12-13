@@ -12,7 +12,7 @@ Currently include strategies from the strategies below:
 * Bollinger Bands 
 
 Currently includes historical data from the following API:
-* Polygon.io 
+* Polygon.io (Recommeded due to greater wealth of tickers eg Options, Futures, Crypto) 
 * Yahoo Finance
 
 Current structure of the repo is as follows ⬇️
