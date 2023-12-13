@@ -1,5 +1,6 @@
 #dependencies
 import yfinance as yf
+import pandas as pd
 
 #Import whichever trading stategy you want to test + backtest function
 from trading_strategies import macd
@@ -15,12 +16,16 @@ start_date = "2023-07-15"
 inital_capital = 10000
 
 # #obtain data as dictionary of dataframes => {asset: DataFrame}
+#Yahoo Finance
 data = {}
 for asset in assets:
     data[asset]=yf.download(asset, 
                             start=start_date, 
                             end=end_date, 
                             interval="1d")
+    
+#Polygon
+data[ticker] = pd.read_csv("price_data/polygon/*******.csv")
 
 #Feed data to the function and generate trading signals for each time step
 signal_generator=macd.MovingAverageCrossoverStrategy(data[ticker], ticker,short_window=5,long_window=20)
