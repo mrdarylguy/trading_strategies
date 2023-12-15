@@ -1,4 +1,5 @@
 tempCodeRunnerFile.py 
 .DS_store 
 testscript.py
-plots/
+/plots/
+polygon_API_key.py 
