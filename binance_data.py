@@ -1,12 +1,15 @@
-from binance import Client, ThreadedWebsocketManager, ThreadedDepthCacheManager
+import os 
+from dotenv import load_dotenv
+from binance import Client
 import pandas as pd
 import mplfinance
 import matplotlib.pyplot as plt
 import numpy as np
 import math
 
-apikey = 'Vh6eKEztfDTPuzf1oscfSVhley5oJYQX8SoXhOsgpW93DC97Wi5mlsAliGInEk4D'
-secret = 'utTivLaLCGGeYeN3jcT0xnjLQVbMkEEz2SAFjkj2T5e7b5lBRsSIeLkOHOmmc5f2'
+load_dotenv()
+apikey = os.getenv('BINANCE-API-KEY')
+secret = os.getenv('BINANCE-SECRET-KEY')
 client = Client(apikey, secret)
 tickers = pd.DataFrame(client.get_all_tickers())
 tickers.set_index("symbol", inplace=True)
