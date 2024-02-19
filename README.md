@@ -4,6 +4,7 @@ This repo contains code that:
 
 * Develops trading signals and backtests against them historical data for any ticker symbol of the user's choice.
 * Profit probability of European Option Spreads for a chosen date of expiry.
+* Analyzes the instantaneous order book for Exchange traded Asset (eg Binance) 
 
   # Systematic Trading 
 
@@ -50,6 +51,19 @@ Current structure of the repo is as follows ⬇️
 | days_to_expiry | business days til option expiration |
 | lower_bound, upper_bound | set the price range to calculate |
 | pricing_model | default is "black_scholes" |
+
+# Order Book skew
+ Navaigate to the file ```binance_data.py```. 
+| Input  | Description |
+| --- | --- |
+| ticker | ticker symbol of the security |
+| dist_from_centre | confine analysis to within X percentage of the mid-price of the order book|
+
+
+![image](https://github.com/mrdarylguy/trading_strategies/assets/42925677/9c19064f-18de-40f6-8161-08186234e5f1)
+
+ 
+
 
 
 
