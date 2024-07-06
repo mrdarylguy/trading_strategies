@@ -12,17 +12,19 @@ class Position:
                  shares_held, 
                  cash,
                  long_short_option, 
+                 PnL
                  ):
         self.current_pos_delta = current_pos_delta
         self.option_contracts = option_contracts
         self.shares_held = shares_held
         self.cash = cash
         self.long_short_option = long_short_option
+        self.PnL = PnL
         pass
 
-apple = Position(0, 1000, 0, 0, 'Short')
+apple = Position(0, 1000, 0, 0, 'Short', 0)
 
-def PnL(long_short, price, quantity):
+def buy_sell(long_short, price, quantity):
     if long_short=="Long":
         apple.cash -= price*quantity
         pass
@@ -42,13 +44,15 @@ def delta_hedge(option_contracts,
     shares_held += -new_pos_delta
     holdings_value = shares_held*price
 
-    PnL(long_short=long_short, price=price, quantity=abs(int(delta_hedge)))
+    buy_sell(long_short=long_short, price=price, quantity=abs(int(delta_hedge)))
+    apple.PnL = holdings_value+apple.cash
 
     print("|Delta to hedge: ", delta_hedge, "|",
-          "Shares/Tokens to" ,long_short,": " ,abs(int(delta_hedge))," |", 
-          "Shares Held: ", int(shares_held), " |", 
-          "Value of Holdings: $", holdings_value ," |", 
-          "Cash holdings: $", apple.cash, "|")
+          "Shares/Tokens to" ,long_short,": " ,abs(int(delta_hedge)),"|", 
+          "Shares Held: ", int(shares_held), "|", 
+          "Value of Holdings: $", holdings_value ,"|", 
+          "Cash holdings: $", apple.cash, "|",
+          "PnL: $", apple.PnL, "|")
     apple.current_pos_delta = new_pos_delta
     pass
 
